@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Crea un post</h1>   
+        <h1>Crea un post</h1>
     </div>
     <div class="container">
         <form action="{{ route('admin.posts.store') }}" method="POST">
@@ -20,6 +20,18 @@
                 @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="form-group">
+              <label for="category">Categoria post:</label>
+              <select class="form-control @error('category_id') is-invalid @enderror" id="category" name="category_id">
+                    <option value="">Seleziona</option>
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                @endforeach
+              </select>
+              @error('category_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="form-check mb-3">
               <input type="checkbox" class="form-check-input @error('published') is-invalid @enderror" id="published" name="published" {{old('published') ? 'checked' : ''}}>
