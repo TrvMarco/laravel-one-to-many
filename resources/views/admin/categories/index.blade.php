@@ -6,9 +6,9 @@
         <div class="col-6">
             <h1>Lista delle categorie</h1>
         </div>
-        {{-- <div class="col-6 d-flex justify-content-end align-self-start">
-            <a href="{{ route('admin.posts.create')}}" type="button" class="btn btn-success">Crea post</a>
-        </div> --}}
+        <div class="col-6 d-flex justify-content-end align-self-start">
+            <a href="{{ route('admin.categories.create')}}" type="button" class="btn btn-success">Crea categoria</a>
+        </div>
     </div>
 </div>
 <div class="container">
@@ -26,8 +26,8 @@
             <th scope="row">{{$category->id}}</th>
             <td>{{$category->name}}</td>
             <td>{{$category->slug}}</td>
-            <td class="d-flex flex-column">
-                <a href="" type="button" class="btn btn-warning btn-sm">Modifica</a>
+            <td class="d-flex">
+                <a href="{{route('admin.categories.edit', $category->id)}}" type="button" class="btn btn-warning btn-sm mr-2">Modifica</a>
                 <form action="{{route('admin.categories.destroy', $category->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
