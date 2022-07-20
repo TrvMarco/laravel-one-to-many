@@ -28,7 +28,7 @@
             <td>{{$category->slug}}</td>
             <td class="d-flex flex-column">
                 <a href="" type="button" class="btn btn-warning btn-sm">Modifica</a>
-                <form action="{{}}" method="POST">
+                <form action="{{route('admin.categories.destroy', $category->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
